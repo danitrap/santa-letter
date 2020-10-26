@@ -1,30 +1,28 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </div>
+  <base-header />
   <router-view />
+  <base-footer />
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script lang="ts">
+  import { defineComponent } from "vue";
 
-#nav {
-  padding: 30px;
+  import $store from "./store";
+  import { getUser } from "./services/userService";
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
+  import BaseHeader from "./components/BaseHeader.vue";
+  import BaseFooter from "./components/BaseFooter.vue";
 
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
-}
-</style>
+  export default defineComponent({
+    name: "App",
+    components: {
+      BaseHeader,
+      BaseFooter,
+    },
+    created() {
+      $store.commit("SET_UUID", getUser());
+    },
+  });
+</script>
+
+<style lang="scss"></style>
