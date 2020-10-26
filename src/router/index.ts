@@ -1,17 +1,19 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router";
 import Home from "../views/Home.vue";
-import Add from "../views/Add.vue";
+import AddModal from "../components/AddModal.vue";
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
     name: "Home",
     component: Home,
-  },
-  {
-    path: "/add",
-    name: "Add",
-    component: Add,
+    children: [
+      {
+        name: "home.add",
+        path: "add",
+        component: AddModal,
+      },
+    ],
   },
   // {
   //   path: "/about",

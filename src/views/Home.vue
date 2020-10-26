@@ -1,4 +1,5 @@
 <template>
+  <router-view></router-view>
   <section class="section">
     <div class="container">
       <Suspense>
@@ -26,11 +27,6 @@
     components: {
       LettersList,
       AddButton,
-    },
-    setup() {
-      return {
-        uuid: computed(() => $store.state.uuid),
-      };
     },
   });
 </script>

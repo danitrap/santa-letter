@@ -1,5 +1,8 @@
 <template>
-  <router-link class="button is-floating is-circular is-primary" to="add">
+  <router-link
+    class="button is-floating is-circular is-primary"
+    :to="{ name: 'home.add' }"
+  >
     <svg style="width:24px;height:24px" viewBox="0 0 24 24">
       <path
         fill="currentColor"
