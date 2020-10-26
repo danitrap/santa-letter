@@ -4,3 +4,9 @@ export interface ILetter {
   text: string;
   likedBy: string[];
 }
+
+export interface ILetterSendPayload {
+  name: string;
+  text: string;
+  uuid: string | null;
+}

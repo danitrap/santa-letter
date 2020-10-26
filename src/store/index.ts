@@ -1,4 +1,4 @@
-import { ILetter } from "@/interfaces/ILetter.interface";
+import { ILetter } from "@/interfaces/shared";
 import { createStore } from "vuex";
 
 export default createStore({

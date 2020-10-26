@@ -21,7 +21,7 @@
 </template>
 
 <script lang="ts">
-  import { ILetter } from "@/interfaces/ILetter.interface";
+  import { ILetter } from "@/interfaces/shared";
   import { computed, defineComponent } from "vue";
   import $store from "../store";
   import LikeButton from "./LikeButton.vue";

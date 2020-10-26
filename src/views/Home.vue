@@ -11,6 +11,7 @@
       </Suspense>
     </div>
   </section>
+  <add-button />
 </template>
 
 <script lang="ts">
@@ -18,11 +19,13 @@
   import $store from "../store";
 
   import LettersList from "../components/LettersList.vue";
+  import AddButton from "../components/AddButton.vue";
 
   export default defineComponent({
     name: "Home",
     components: {
       LettersList,
+      AddButton,
     },
     setup() {
       return {
