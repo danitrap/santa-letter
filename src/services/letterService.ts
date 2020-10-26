@@ -24,5 +24,6 @@ export const send = ({ uuid, ...letter }: ILetterSendPayload) => {
   return db.collection("letters").add({
     ...letter,
     likedBy: [uuid],
+    createdAt: firebase.firestore.FieldValue.serverTimestamp(),
   });
 };
