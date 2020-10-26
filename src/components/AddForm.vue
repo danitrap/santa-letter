@@ -31,6 +31,7 @@
         <button
           class="button is-primary"
           :class="{ 'is-loading': loading }"
+          :disabled="!valid"
           type="submit"
         >
           Invia
@@ -58,6 +59,8 @@
         uuid: $store.state.uuid,
       });
 
+      const valid = computed(() => form.name && form.text);
+
       const loading = ref(false);
 
       const submit = async () => {
@@ -69,6 +72,7 @@
 
       return {
         form,
+        valid,
         loading,
         submit,
       };
