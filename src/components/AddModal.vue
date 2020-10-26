@@ -8,7 +8,11 @@
         </div>
       </div>
     </div>
-    <button class="modal-close is-large" aria-label="close"></button>
+    <button
+      class="modal-close is-large"
+      aria-label="close"
+      @click="$router.back()"
+    ></button>
   </div>
 </template>
 
