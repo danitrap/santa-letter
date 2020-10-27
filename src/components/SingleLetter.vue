@@ -1,7 +1,7 @@
 <template>
   <div class="card">
     <div class="card-content">
-      <p class="title">
+      <p class="title is-handwritten">
         <router-link
           :to="{ name: 'home.single', params: { id: letter.id } }"
           v-if="!viewMode"

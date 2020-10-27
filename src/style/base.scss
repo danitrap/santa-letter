@@ -1,15 +1,29 @@
 @charset "utf-8";
 
 // Import a Google Font
-@import url("https://fonts.googleapis.com/css?family=Nunito:400,700");
+@import url("https://fonts.googleapis.com/css?family=Nunito:400,700:family=Lobster:100");
 
-$cyan: hsl(204, 71%, 53%);
+$cyan: #0EB4DC;
+$red: #FF3333;
 $black: #363636;
+$green: #32A658;
 
 // Update Bulma's global variables
 $family-sans-serif: "Nunito", sans-serif;
 $primary: $cyan;
+$danger: $red;
 $link: $black;
 $link-hover: $cyan;
 
+// Other variables
+
 @import "../../node_modules/bulma/bulma.sass";
+$family-handwriting: "Lobster", sans-serif;
+
+.is-handwritten {
+    font-family: $family-handwriting;
+}
+
+.is-green {
+    background-color: $green;
+}
