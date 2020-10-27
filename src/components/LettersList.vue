@@ -42,7 +42,7 @@
 
   .single-letter-overview ::v-deep .title {
     position: relative;
-    height: 4.6em; /* exactly three lines */
+    height: 4.4em; /* exactly three lines */
 
     &:after {
       content: "";
