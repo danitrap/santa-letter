@@ -3,7 +3,9 @@
     <div class="content has-text-centered">
       <p>
         Made with ❤️ by
-        <a href="https://github.com/danitrap/santa-letter">Daniele Trapani</a>.
+        <a href="https://github.com/danitrap/santa-letter">Daniele Trapani</a>
+        &
+        <a href="https://github.com/adrianom">Adriano Mandalà</a>.
       </p>
     </div>
   </footer>
