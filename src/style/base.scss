@@ -10,11 +10,12 @@ $green: #32A658;
 
 // Update Bulma's global variables
 $family-sans-serif: "Nunito", sans-serif;
-$primary: $cyan;
+$primary: $red;
+$success: $green;
 $danger: $red;
 $link: $black;
 $link-hover: $cyan;
-
+$footer-background-color: $green;
 // Other variables
 
 @import "../../node_modules/bulma/bulma.sass";
@@ -22,8 +23,4 @@ $family-handwriting: "Lobster", sans-serif;
 
 .is-handwritten {
     font-family: $family-handwriting;
-}
-
-.is-green {
-    background-color: $green;
 }
