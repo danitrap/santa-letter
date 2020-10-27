@@ -1,6 +1,7 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router";
 import Home from "../views/Home.vue";
 import AddModal from "../components/AddModal.vue";
+import SingleLetterModal from "../components/SingleLetterModal.vue"
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -12,6 +13,12 @@ const routes: Array<RouteRecordRaw> = [
         name: "home.add",
         path: "add",
         component: AddModal,
+      },
+      {
+        name: "home.single",
+        path: "letter/:id",
+        component: SingleLetterModal,
+        props: true,
       },
     ],
   },

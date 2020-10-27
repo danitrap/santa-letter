@@ -2,7 +2,9 @@
   <div class="card">
     <div class="card-content">
       <p class="title">
+        <router-link :to="{name: 'home.single', params: {id: letter.id}}">
         {{ letter.text }}
+        </router-link>
       </p>
       <p class="subtitle">
         {{ letter.name }}
