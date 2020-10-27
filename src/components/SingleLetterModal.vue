@@ -20,6 +20,7 @@
   import { defineComponent, computed } from "vue";
   import SingleLetter from "./SingleLetter.vue";
   import $store from '@/store';
+  import { like, unlike } from '@/services/letterService'
 
   export default defineComponent({
     name: "SingleLetterModal",
@@ -28,9 +29,9 @@
     setup(props) {
       $store.commit('SET_CURRENT_LETTER_ID', props.id);
       const letter = computed(() => $store.getters.currentLetter);
-
+      
       return {
-        letter,
+        letter, like, unlike
       }
     },
     unmounted() {
