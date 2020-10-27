@@ -2,9 +2,15 @@
   <div class="card">
     <div class="card-content">
       <p class="title">
-        <router-link :to="{name: 'home.single', params: {id: letter.id}}">
-        {{ letter.text }}
+        <router-link
+          :to="{ name: 'home.single', params: { id: letter.id } }"
+          v-if="!viewMode"
+        >
+          {{ letter.text }}
         </router-link>
+        <template v-else>
+          {{ letter.text }}
+        </template>
       </p>
       <p class="subtitle">
         {{ letter.name }}
@@ -43,6 +49,10 @@
       unlike: {
         type: Function,
         required: true,
+      },
+      viewMode: {
+        type: Boolean,
+        default: false,
       },
     },
     setup(props) {

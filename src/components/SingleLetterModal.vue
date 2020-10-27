@@ -7,6 +7,7 @@
         :letter="letter"
         :like="like"
         :unlike="unlike"
+        :viewMode="true"
       />
     </div>
     <button
