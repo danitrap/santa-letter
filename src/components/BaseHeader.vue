@@ -2,7 +2,7 @@
   <section class="hero is-primary">
     <div class="hero-body">
       <div class="container">
-        <h1 class="title">
+        <h1 class="title is-handwritten">
           Natale a distanza sociale
         </h1>
         <h2 class="subtitle">
