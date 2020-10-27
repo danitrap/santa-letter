@@ -4,7 +4,11 @@
     v-for="(letters, index) in lettersInColumns"
     :key="index"
   >
-    <div class="column is-4" v-for="letter in letters" :key="letter.id">
+    <div
+      class="column is-4 single-letter-overview"
+      v-for="letter in letters"
+      :key="letter.id"
+    >
       <single-letter :letter="letter" :like="like" :unlike="unlike" />
     </div>
   </div>
@@ -28,3 +32,31 @@
     },
   });
 </script>
+
+<style lang="scss" scoped>
+  .single-letter-overview ::v-deep .title {
+    max-width: 100ch;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+
+  .single-letter-overview ::v-deep .title {
+    position: relative;
+    height: 4.6em; /* exactly three lines */
+
+    &:after {
+      content: "";
+      text-align: right;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 70%;
+      height: 1.2em;
+      background: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0),
+        rgba(255, 255, 255, 1) 50%
+      );
+    }
+  }
+</style>
