@@ -35,12 +35,7 @@
 
 <style lang="scss" scoped>
   .single-letter-overview ::v-deep .title {
-    max-width: 100ch;
-    text-overflow: ellipsis;
     overflow: hidden;
-  }
-
-  .single-letter-overview ::v-deep .title {
     position: relative;
     height: 4.4em; /* exactly three lines */
 
@@ -50,7 +45,7 @@
       position: absolute;
       bottom: 0;
       right: 0;
-      width: 70%;
+      width: 90%;
       height: 1.2em;
       background: linear-gradient(
         to right,
