@@ -24,6 +24,9 @@
           }}</like-button>
         </span>
       </p>
+      <p class="card-footer-item" :title="fullTimestamp">
+        {{ date }}
+      </p>
     </footer>
   </div>
 </template>
@@ -68,7 +71,19 @@
           : props.like(props.letter.id);
       };
 
-      return { liked, toggleLike };
+      const createdAtMillis = computed(
+        () => props.letter.createdAt.seconds * 1000
+      );
+
+      const date = computed(() =>
+        new Date(createdAtMillis.value).toLocaleDateString()
+      );
+
+      const fullTimestamp = computed(() =>
+        new Date(createdAtMillis.value).toLocaleString()
+      );
+
+      return { liked, toggleLike, date, fullTimestamp };
     },
   });
 </script>
