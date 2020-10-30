@@ -18,6 +18,6 @@
   import { defineComponent } from "vue";
 
   export default defineComponent({
-    name: "BaseHeader",
+    name: "TheHeader",
   });
 </script>

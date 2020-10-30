@@ -1,7 +1,7 @@
 <template>
-  <base-header />
+  <the-header />
   <router-view />
-  <base-footer />
+  <the-footer />
 </template>
 
 <script lang="ts">
@@ -10,14 +10,14 @@
   import $store, { MUTATIONS } from "./store";
   import { getUser } from "./services/userService";
 
-  import BaseHeader from "./components/BaseHeader.vue";
-  import BaseFooter from "./components/BaseFooter.vue";
+  import TheHeader from "./components/TheHeader.vue";
+  import TheFooter from "./components/TheFooter.vue";
 
   export default defineComponent({
     name: "App",
     components: {
-      BaseHeader,
-      BaseFooter,
+      TheHeader,
+      TheFooter,
     },
     created() {
       $store.commit(MUTATIONS.SET_UUID, getUser());
