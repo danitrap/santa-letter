@@ -7,7 +7,7 @@
 <script lang="ts">
   import { defineComponent } from "vue";
 
-  import $store from "./store";
+  import $store, { MUTATIONS } from "./store";
   import { getUser } from "./services/userService";
 
   import BaseHeader from "./components/BaseHeader.vue";
@@ -20,7 +20,7 @@
       BaseFooter,
     },
     created() {
-      $store.commit("SET_UUID", getUser());
+      $store.commit(MUTATIONS.SET_UUID, getUser());
     },
   });
 </script>
