@@ -65,9 +65,15 @@
 
       const submit = async () => {
         loading.value = true;
-        await send(form);
-        loading.value = false;
-        router.push("/");
+
+        try {
+          await send(form);
+        } catch (error) {
+          console.error(error);
+        } finally {
+          loading.value = false;
+          router.push("/");
+        }
       };
 
       return {

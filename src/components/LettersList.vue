@@ -15,9 +15,12 @@
 </template>
 
 <script lang="ts">
-  import { defineComponent } from "vue";
+  import { computed, defineComponent, ref } from "vue";
 
-  import { useLetters } from "../composables/useLetters";
+  import { chunk } from "@/helpers/chunk";
+  import { like, unlike, watchCollection } from "../services/letterService";
+  import $store, { MUTATIONS } from "@/store";
+  import { ILetter } from "@/interfaces/shared";
 
   import SingleLetter from "./SingleLetter.vue";
 
@@ -27,14 +30,22 @@
       SingleLetter,
     },
     async setup() {
-      const letters = useLetters();
-      return letters;
+      const letters = ref<ILetter[]>([]);
+
+      await watchCollection((newLetters) => {
+        letters.value = newLetters;
+        $store.commit(MUTATIONS.SET_LETTERS_MAP, newLetters);
+      });
+
+      const lettersInColumns = computed(() => chunk<ILetter>(letters.value, 3));
+
+      return { lettersInColumns, like, unlike };
     },
   });
 </script>
 
 <style lang="scss" scoped>
-  .single-letter-overview ::v-deep .title {
+  .single-letter-overview ::v-deep(.title) {
     overflow: hidden;
     position: relative;
     height: 4.4em; /* exactly three lines */

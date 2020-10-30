@@ -21,7 +21,7 @@
 <script lang="ts">
   import { defineComponent, computed } from "vue";
   import SingleLetter from "./SingleLetter.vue";
-  import $store from "@/store";
+  import $store, { GETTERS, MUTATIONS } from "@/store";
   import { like, unlike } from "@/services/letterService";
 
   export default defineComponent({
@@ -29,8 +29,8 @@
     components: { SingleLetter },
     props: ["id"],
     setup(props) {
-      $store.commit("SET_CURRENT_LETTER_ID", props.id);
-      const letter = computed(() => $store.getters.currentLetter);
+      $store.commit(MUTATIONS.SET_CURRENT_LETTER_ID, props.id);
+      const letter = computed(() => $store.getters[GETTERS.CURRENT_LETTER]);
 
       return {
         letter,
@@ -39,7 +39,7 @@
       };
     },
     unmounted() {
-      $store.commit("SET_CURRENT_LETTER_ID", null);
+      $store.commit(MUTATIONS.SET_CURRENT_LETTER_ID, null);
     },
   });
 </script>
