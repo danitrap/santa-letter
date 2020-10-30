@@ -44,25 +44,4 @@
   });
 </script>
 
-<style lang="scss" scoped>
-  .single-letter-overview ::v-deep(.title) {
-    overflow: hidden;
-    position: relative;
-    height: 4.4em; /* exactly three lines */
-
-    &:after {
-      content: "";
-      text-align: right;
-      position: absolute;
-      bottom: 0;
-      right: 0;
-      width: 90%;
-      height: 1.2em;
-      background: linear-gradient(
-        to right,
-        rgba(255, 255, 255, 0),
-        rgba(255, 255, 255, 1) 50%
-      );
-    }
-  }
-</style>
+<style lang="scss" scoped></style>
