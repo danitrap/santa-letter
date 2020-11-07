@@ -7,7 +7,9 @@
 <script lang="ts">
   import { defineComponent } from "vue";
 
-  import $store, { MUTATIONS } from "./store";
+  import { MUTATIONS } from "./store";
+  import { useStore } from "vuex";
+
   import { getUser } from "./services/userService";
 
   import TheHeader from "./components/TheHeader.vue";
@@ -19,8 +21,9 @@
       TheHeader,
       TheFooter,
     },
-    created() {
-      $store.commit(MUTATIONS.SET_UUID, getUser());
+    setup() {
+      const store = useStore();
+      store.commit(MUTATIONS.SET_UUID, getUser());
     },
   });
 </script>

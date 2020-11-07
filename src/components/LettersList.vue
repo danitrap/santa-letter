@@ -16,10 +16,11 @@
 
 <script lang="ts">
   import { computed, defineComponent, ref } from "vue";
+  import { useStore } from "vuex";
 
   import { chunk } from "@/helpers/chunk";
   import { like, unlike, watchCollection } from "../services/letterService";
-  import $store, { MUTATIONS } from "@/store";
+  import { MUTATIONS } from "@/store";
   import { ILetter } from "@/interfaces/shared";
 
   import SingleLetter from "./SingleLetter.vue";
@@ -31,10 +32,11 @@
     },
     async setup() {
       const letters = ref<ILetter[]>([]);
+      const store = useStore();
 
       await watchCollection((newLetters) => {
         letters.value = newLetters;
-        $store.commit(MUTATIONS.SET_LETTERS_MAP, newLetters);
+        store.commit(MUTATIONS.SET_LETTERS_MAP, newLetters);
       });
 
       const lettersInColumns = computed(() => chunk<ILetter>(letters.value, 3));

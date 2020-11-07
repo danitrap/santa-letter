@@ -32,9 +32,10 @@
 </template>
 
 <script lang="ts">
-  import { ILetter } from "@/interfaces/shared";
+  import { useStore } from "vuex";
   import { computed, defineComponent } from "vue";
-  import $store from "../store";
+
+  import { ILetter } from "@/interfaces/shared";
   import LikeButton from "./LikeButton.vue";
 
   export default defineComponent({
@@ -59,10 +60,11 @@
       },
     },
     setup(props) {
+      const store = useStore();
       const liked = computed(
         () =>
-          $store.state.uuid &&
-          (props.letter as ILetter).likedBy.includes($store.state.uuid)
+          store.state.uuid &&
+          (props.letter as ILetter).likedBy.includes(store.state.uuid)
       );
 
       const toggleLike = () => {
@@ -72,7 +74,7 @@
       };
 
       const createdAtMillis = computed(
-        () => props.letter.createdAt.seconds * 1000
+        () => (props.letter.createdAt?.seconds || Date.now()) * 1000
       );
 
       const date = computed(() =>

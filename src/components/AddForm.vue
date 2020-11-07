@@ -7,7 +7,7 @@
           class="input"
           type="text"
           placeholder="Nome"
-          v-model="form.name"
+          v-model.trim="form.name"
         />
       </div>
     </div>
@@ -17,7 +17,7 @@
         <textarea
           class="textarea"
           placeholder="Caro Babbo Natale, "
-          v-model="form.text"
+          v-model.trim="form.text"
         ></textarea>
       </div>
     </div>
@@ -46,17 +46,19 @@
 
 <script lang="ts">
   import { computed, defineComponent, reactive, ref } from "vue";
-  import $store from "../store";
+  import { useStore } from "vuex";
+
   import { send } from "../services/letterService";
   import router from "@/router";
 
   export default defineComponent({
     name: "AddForm",
     setup() {
+      const store = useStore();
       const form = reactive({
         name: "",
         text: "",
-        uuid: $store.state.uuid,
+        uuid: store.state.uuid,
       });
 
       const valid = computed(() => form.name && form.text);

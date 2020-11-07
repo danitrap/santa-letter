@@ -29,7 +29,6 @@
 
 <script lang="ts">
   import { computed, defineComponent } from "vue";
-  import $store from "../store";
 
   import LettersList from "../components/LettersList.vue";
   import AddButton from "../components/AddButton.vue";
