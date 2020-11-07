@@ -1,5 +1,5 @@
 <template>
-  <div class="card">
+  <div class="card" :class="{ 'is-overview': !viewMode }">
     <div class="card-content">
       <p class="title is-handwritten">
         <router-link
@@ -32,9 +32,10 @@
 </template>
 
 <script lang="ts">
-  import { ILetter } from "@/interfaces/shared";
+  import { useStore } from "vuex";
   import { computed, defineComponent } from "vue";
-  import $store from "../store";
+
+  import { ILetter } from "@/interfaces/shared";
   import LikeButton from "./LikeButton.vue";
 
   export default defineComponent({
@@ -59,10 +60,11 @@
       },
     },
     setup(props) {
+      const store = useStore();
       const liked = computed(
         () =>
-          $store.state.uuid &&
-          (props.letter as ILetter).likedBy.includes($store.state.uuid)
+          store.state.uuid &&
+          (props.letter as ILetter).likedBy.includes(store.state.uuid)
       );
 
       const toggleLike = () => {
@@ -72,7 +74,7 @@
       };
 
       const createdAtMillis = computed(
-        () => props.letter.createdAt.seconds * 1000
+        () => (props.letter.createdAt?.seconds || Date.now()) * 1000
       );
 
       const date = computed(() =>
@@ -87,3 +89,26 @@
     },
   });
 </script>
+
+<style lang="scss" scoped>
+  .is-overview .title {
+    overflow: hidden;
+    position: relative;
+    height: 4.4em; /* exactly three lines */
+
+    &:after {
+      content: "";
+      text-align: right;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 90%;
+      height: 1.2em;
+      background: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0),
+        rgba(255, 255, 255, 1) 50%
+      );
+    }
+  }
+</style>

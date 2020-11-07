@@ -3,10 +3,10 @@
 // Import a Google Font
 @import url("https://fonts.googleapis.com/css?family=Nunito:400,700:family=Lobster:100");
 
-$cyan: #0EB4DC;
-$red: #FF3333;
+$cyan: #0eb4dc;
+$red: #ff3333;
 $black: #363636;
-$green: #32A658;
+$green: #32a658;
 
 // Update Bulma's global variables
 $family-sans-serif: "Nunito", sans-serif;
@@ -22,5 +22,5 @@ $footer-background-color: $green;
 $family-handwriting: "Lobster", sans-serif;
 
 .is-handwritten {
-    font-family: $family-handwriting;
+  font-family: $family-handwriting;
 }

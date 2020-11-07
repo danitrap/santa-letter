@@ -13,15 +13,18 @@
     <button
       class="modal-close is-large"
       aria-label="close"
-      @click="$router.back()"
+      @click="goBack"
     ></button>
   </div>
 </template>
 
 <script lang="ts">
   import { defineComponent, computed } from "vue";
+  import { useStore } from "vuex";
+  import { useRouter } from "vue-router";
+
   import SingleLetter from "./SingleLetter.vue";
-  import $store, { GETTERS, MUTATIONS } from "@/store";
+  import { GETTERS, MUTATIONS } from "@/store";
   import { like, unlike } from "@/services/letterService";
 
   export default defineComponent({
@@ -29,17 +32,22 @@
     components: { SingleLetter },
     props: ["id"],
     setup(props) {
-      $store.commit(MUTATIONS.SET_CURRENT_LETTER_ID, props.id);
-      const letter = computed(() => $store.getters[GETTERS.CURRENT_LETTER]);
+      const store = useStore();
+      const router = useRouter();
+      store.commit(MUTATIONS.SET_CURRENT_LETTER_ID, props.id);
+      const letter = computed(() => store.getters[GETTERS.CURRENT_LETTER]);
+
+      const goBack = () => {
+        store.commit(MUTATIONS.SET_CURRENT_LETTER_ID, null);
+        router.back();
+      };
 
       return {
         letter,
         like,
         unlike,
+        goBack,
       };
-    },
-    unmounted() {
-      $store.commit(MUTATIONS.SET_CURRENT_LETTER_ID, null);
     },
   });
 </script>

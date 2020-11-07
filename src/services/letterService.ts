@@ -1,6 +1,6 @@
 import * as firebase from "firebase";
 import { db } from "../firebaseDatabase";
-import $store from "../store";
+import $store from "@/store";
 
 import { ILetter, ILetterSendPayload } from "../interfaces/shared";
 
